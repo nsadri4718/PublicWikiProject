@@ -1,0 +1,71 @@
+<div class="tr-breadcrumb bg-image section-before">
+  <div class="container">
+    <div class="breadcrumb-info text-center">
+      <div class="page-title">
+        <h1>{{ title }}</h1>
+      </div>
+      <ul class="tr-list job-meta list-inline">
+        <li><i class="fa fa-book" aria-hidden="true"></i>Category: {{ category }}</li>
+        <li><i class="fa fa-user" aria-hidden="true"></i>Author: {{ author }}</li>
+      </ul>
+      <div class="buttons">
+        <a href="#" class="btn button-bookmark"><i class="fa fa-bookmark" aria-hidden="true"></i>Bookmark</a>
+        <span class="btn button-share">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>Share <span><a href="#">
+          <i class="fa fa-facebook" aria-hidden="true"></i></a><a href="#">
+          <i class="fa fa-twitter" aria-hidden="true"></i></a><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-lg-9">
+
+        <!-- ng-bind-html displays (renders) HTML in a secure way and does not allow XSS -->
+        <div class="section" ng-bind-html="html">
+          
+          {{ html }}
+          
+        </div>
+
+      </div>
+
+      <div class="col-md-4 col-lg-3">
+        <div class="tr-sidebar">
+          <div class="widget-area">
+            <div class="widget short-info">
+              <h3 class="widget_title">Wiki Info</h3>
+              <ul class="tr-list">
+                <li class="media">
+                  <div class="pull-left"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                  <div class="media-body"><span>Published:</span>{{ createdDate | date:'MM/dd/yyyy h:mm a'}}</div>
+                </li>
+                <li class="media">
+                  <div class="pull-left"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                  <div class="media-body"><span>Updated:</span>{{ updatedDate | date:'MM/dd/yyyy h:mm a'}}</div>
+                </li>
+                <li class="media">
+                  <div class="pull-left"><i class="fa fa-user" aria-hidden="true"></i></div>
+                  <div class="media-body"><span>Author:</span>{{ author }}</div>
+                </li>
+                <li class="media">
+                  <div class="pull-left"><i class="fa fa-book" aria-hidden="true"></i></div>
+                  <div class="media-body"><span>Category:</span>{{ category }}</div>
+                </li>
+                <li class="media">
+                  <div class="pull-left"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                  <div class="media-body"><span>Page Views:</span>{{ pageViews }}</div>
+                </li>
+              </ul>
+              <a ng-href="#!/post/{{urlName}}" class="btn btn-secondary mt-3">Edit Wiki</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

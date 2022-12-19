@@ -1,0 +1,81 @@
+
+  <div class="tr-banner section-before bg-image">
+    <div class="container">
+      <div class="banner-content text-center">
+        <h1>The Easiest Way to Create a Wiki</h1>
+        <h2>Share your ideas with the world!</h2>
+        <div class="banner-form">
+          <form>
+            <input type="text" class="form-control" placeholder="Wiki Keyword" ng-model="searchTerm">
+            <button type="button" class="btn btn-primary" ng-click="search(searchTerm)">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tr-recent-news section-padding">
+    <div class="container">
+      <div class="section-title" ng-show="searchResults">
+        <h1>Search Results</h1>
+      </div>
+      <div class="blog-content">
+
+        <!-- Sample HTML for a search result -->
+        <div class="tr-post media" ng-repeat="item in searchResults">
+          <div class="entry-content media-body">
+            <a ng-href="{{ 'https://CS157-PubWiki-Final-Project.ns4718.repl.co/#!/' + item.urlName }}" class="btn btn-success pull-right">View</a>
+            <h2 class="entry-title"><a>{{item.title}}</a></h2>
+            
+            <ul class="entry-meta tr-list">
+              <li><i class="fa fa-user"></i>Author: {{item.author}} </li>
+              <li><i class="fa fa-book"></i>Category: {{item.category}} </li>
+              <li><i class="fa fa-clock-o"></i>Updated: {{item.updatedDate | date:'MM/dd/yyyy'}} </li>
+              <li><i class="fa fa-eye"></i> {{item.pageViews}} Views</li>
+            </ul>
+          </div>
+        </div>
+        <!-- End Sample -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="tr-steps bg-image section-padding section-before">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="step">
+            <div class="step-image">
+              <img src="images/icons/step1.png" alt="images" class="img-fluid">
+            </div>
+            <h1>Step 1</h1>
+            <h2>Register an account (Optional)</h2>
+            <p>Registering an account will give you the ultimate control over your wikis but we don't require it</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="step">
+            <div class="step-image">
+              <img src="images/icons/step2.png" alt="images" class="img-fluid">
+            </div>
+            <h1>Step 2</h1>
+            <h2>create a free wiki</h2>
+            <p>Just will in some details and begin creating your free PubWiki!</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="step">
+            <div class="step-image">
+              <img src="images/icons/step3.png" alt="images" class="img-fluid">
+            </div>
+            <h1>Step 3</h1>
+            <h2>Share your wiki</h2>
+            <p>Once you create your PubWiki, you can share it with the world!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

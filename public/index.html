@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wikiApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PubWiki | Wiki for the world!</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" href="images/ico/favicon.ico">
+</head>
+
+<body ng-controller="mainController">
+  <header class="tr-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fa-align-justify"></i></span>
+          </button>
+          <a class="navbar-brand" href="#!/"><img class="img-fluid" src="images/logo.png" alt="Logo"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav navbar-nav">
+            <li class="tr-dropdown active"><a href="#!/">Home</a></li>
+            <li><a href="#!/post">Post A Wiki</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <ul class="sign-in tr-list">
+            <li><i class="fa fa-user"></i></li>
+            <li><a href="#!/signin">Sign In </a></li>
+            <li><a href="#!/register">Register</a></li>
+          </ul>
+          <a href="#!/post" class="btn btn-primary">Post Wiki</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Views injected here -->
+  <div ng-view></div>
+   
+  <footer class="footer">
+    <div class="footer-top section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="footer-widget">
+              <h3>About Us</h3>
+              <ul class="tr-list">
+                <li><a href="#">About Seeker</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="footer-widget">
+              <h3>Wiki Users</h3>
+              <ul class="tr-list">
+                <li><a href="#">Post a Wiki</a></li>
+                <li><a href="#">Create Account</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Video Guides</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="copyright">
+          <p>Copyright © 2021. All rights reserved.</p>
+        </div>
+        <div class="footer-social pull-right">
+          <ul class="tr-list">
+            <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.angularjs.org/1.8.2/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-sanitize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="js/ckeditor.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="f1e6f498ea45faff5a9faeba-|49" defer=""></script>
+
+
+  <script>
+    var wikiApp = angular.module("wikiApp", ["ngRoute", "ngSanitize"]);
+
+    // Routes
+    wikiApp.config(function($routeProvider) {
+      $routeProvider
+        .when("/", {
+          templateUrl: "views/home.html",
+          controller: "homeController"
+        })
+        .when("/signin", {
+          templateUrl: "views/signin.html",
+          controller: "signinController"
+        })
+        .when("/register", {
+          templateUrl: "views/register.html",
+          controller: "registerController"
+        })
+        .when("/post/:urlName?", {
+          templateUrl: "views/post.html",
+          controller: "postController"
+        })
+        .when("/:urlName", {
+          templateUrl: "views/display.html",
+          controller: "displayController"
+        })
+    });
+
+    // Main Controller
+    wikiApp.controller("mainController", function($scope) {
+      // This controller should be left blank unless you plan to implement
+      // authentication or other functionality on the main parent template.
+    });
+    
+  </script>
+
+  <!-- AngularJS Controllers -->
+  <script src="controllers/home.js"></script>
+  <script src="controllers/post.js"></script>
+  <script src="controllers/signin.js"></script>
+  <script src="controllers/register.js"></script>
+  <script src="controllers/display.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+Endpoints (Server Side)
+
+Home/Search View (#!/)
+GET (/api/wiki/)
+- Take a look at the filter example we did in class
+- for filter object from the client
+
+- (client) let filter = {
+  $or: [
+    { title: { $regex: $scope.searchTerm, $options: 'i' } },
+    { html: { $regex: $scope.searchTerm, $options: 'i' } }
+  ]
+}
+
+- "/api/wiki/filter=" + JSON.stringify(filter)
+
+
+
+Wiki Display View (#!/{pageName})
+GET (/api/wiki/:urlName)
+- Use the findOne to get a document based on the urlname which is a unique index
+- Increment hit counter
+- Save the document and return it
+- Create a new object leaving out the client password and send it
+
+
+Post/Edit View (#!/post) & (#!/post/{pageName})
+POST (/api/wiki/) (Create a new page)
+- Create a new Wiki object and save it
+
+
+PUT (/api/wiki/:urlName) (Updating a page) https://endpinturl/api/wiki/cs157?password=abc123
+- Use findOne to get document based on the urlName which is a unique index
+- Check the password if (result.password == req.query.password)
+- Update the fields, update the updated date/time Date.now();
+- Save the document and return it
+
+
+DELETE (/api/wiki/:urlName)
+- Use findOne to get document based on urlName...
+- check password if (result.password == req.query.password)
+- Use findOneAndDelete() to delete the document based on the urlName
+
+
+const wikiSchema = new mongoose... {
+  userId: {
+    type: ObjectId (not sure),
+    required: true
+  }
+  category: {
+    type: String,
+    required: true,
+    enum: ["Technology", "Cooking", "Resume"]
+  }
+
+const users = new mongoose.Sch... {
+  _id
+}

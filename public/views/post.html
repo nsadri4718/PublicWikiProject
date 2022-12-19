@@ -1,0 +1,132 @@
+<div class="tr-breadcrumb bg-image section-before">
+	<div class="container">
+		<div class="breadcrumb-info text-center">
+			<div class="page-title">
+				<h1>Post/Edit Your Wiki</h1>
+			</div>
+			<ol class="breadcrumb">
+				<li><a href="#!/">Home</a></li>
+				<li class="active">Wiki Post/Edit</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<form name="wikiForm"> 
+  <div class="tr-post-job page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+      
+          <div class="section">
+            <span class="tr-title">Wiki Info</span>
+            
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Title</label>
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <span class="badge badge-danger" ng-show="!title">Required</span>
+                </div>
+                <div class="row">
+                  <input type="text" class="form-control" ng-model="title"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Category</label>
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <span class="badge badge-danger" ng-show="!category">Required</span>
+                </div>
+                <div class="row">
+                  <select class="form-control" ng-model="category">
+                    <option value="" selected>Select a category</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Media">Media</option>
+                    <option value="Food">Food</option>
+                    <option value="Health">Health</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <label>Author</label>
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <span class="badge badge-danger" ng-show="!author">Required</span>
+                </div>
+                <div class="row">
+                  <input type="text" class="form-control" ng-model="author"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <label>URL Name</label>
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <span class="badge badge-danger" ng-show="!urlName">Required</span>
+                </div>
+                <div class="row">
+                  <input id="url" type="text" class="form-control" ng-model="urlName"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" ng-show="urlName">
+              <div class="col-sm-3">
+                <label>Final URL</label>
+              </div>
+              <div class="col-sm-9">
+                {{ "https://CS157-PubWiki-Final-Project.ns4718.repl.co/#!/" + urlName }}
+              </div>
+            </div>
+          </div>        
+
+          <div class="section">
+            <span class="tr-title">Wiki Content</span>
+            <div id="editor"></div>
+          </div>
+
+          <div class="section agreement">  
+            <div class="form-group mb-5">
+              <strong>Management Password </strong><span class="badge badge-danger" ng-show="!password">Required</span>
+
+              <input type="password" class="form-control mb-2" ng-model="password" required/>
+              <small class="form-text text-muted">A password is needed so you can edit this wiki in the future. If this is a new Wiki, enter a new password, if you are editing an existing Wiki, enter the password you set before.</small>
+            </div>
+
+            <div class="mb-5">
+              <input type="checkbox" ng-model="checkTermsOfUse"/>
+              You agree to our <a href="#" target="_blank">Terms of Use</a> and <a href="#" target="_blank">Privacy Policy</a> and acknowledge that you
+              are the rightful owner of this content.
+            </div>
+
+            <div class="buttons">
+              <button type="button" class="btn btn-primary" ng-disabled="!checkTermsOfUse" ng-click="save(urlName)">Save Wiki</button>
+              <a href="#!/" class="btn button-cancel">Cancel</a>
+              <button type="button" class="btn btn-danger pull-right" ng-click="delete(urlName, password)">Delete Wiki</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <span class="tr-title">Live Site</span>
+            <h3><a ng-href="#!/{{urlName}}">https://CS157-PubWiki-Final-Project.ns4718.repl.co/#!/{{urlName }}</a></h3>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
